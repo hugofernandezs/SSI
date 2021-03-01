@@ -3,23 +3,31 @@
 
 ### VARIABLES ###
 
-PROJECT_ROOT	:= D:\Home\Universidad\SSI\Vigenere
+PROJECT_ROOT	:= /mnt/d/Home/Universidad/SSI/Vigenere/
 
-CC		:= g++ -g -std=c++20 -Wall -Wextra
-CO		:= g++ -g -std=c++20 -Wall -Wextra -c
+CC		:= g++ -g -std=c++17 -Wall -Wextra
+CCO		:= g++ -g -std=c++17 -Wall -Wextra -c
 
-EXE		:= $(PROJECT_ROOT)\bin\vigenere.exe
+EXE		:= $(PROJECT_ROOT)/bin/vigenere.exe
 
-MAIN	:= $(PROJECT_ROOT)\src\vigenere.cpp
+MAIN	:= $(PROJECT_ROOT)/src/vigenere.cpp
+
+VIG.H	:= $(PROJECT_ROOT)/src/VigenereCipher.h
+VIG.O	:= $(PROJECT_ROOT)/src/VigenereCipher.o
+VIG.C	:= $(PROJECT_ROOT)/src/VigenereCipher.cpp
+
 
 
 
 
 ### FUNCTIONS ###
 
-all:
-	$(CC) $(MAIN) -o $(EXE)
+all: $(VIG.O)
+	$(CC) $(MAIN) $^ -o $(EXE)
+
+$(VIG.O): $(VIG.C) $(VIG.H)
+	$(CCO) $< -o $(VIG.O)
 
 clean:
-	find . -name "*.o" -type f -delete
-	find . -name "*.out" -type f -delete
+	-find . -name "*.o" -type f -delete
+	-find . -name "*.out" -type f -delete
