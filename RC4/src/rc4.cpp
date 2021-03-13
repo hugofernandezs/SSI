@@ -37,6 +37,8 @@ int main(void) {
 			auxData.clear();
 		}
 	}
+	key.emplace_back(std::stoi(auxData));
+	auxData.clear();
   for(const char& data : auxMessage) {
 		if(data != ' ') {
 			auxData.push_back(data);
@@ -46,7 +48,9 @@ int main(void) {
 			auxData.clear();
 		}
 	}
-
+	message.emplace_back(std::stoi(auxData));
+	auxData.clear();
+	
 	Rc4Cipher cipher(key);
 	std::vector<unsigned> encrypted = cipher.encrypt(message);
 	std::vector<unsigned> decrypted = cipher.decrypt(encrypted);

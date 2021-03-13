@@ -3,7 +3,7 @@
 
 ### VARIABLES ###
 
-PROJECT_ROOT	:= /home/siga01.stic.ull.es/12/alu0101112664/SSI/RC4/
+PROJECT_ROOT	:= /mnt/d/Home/Universidad/SSI/RC4
 
 CC		:= g++ -g -std=c++17 -Wall -Wextra
 CCO		:= g++ -g -std=c++17 -Wall -Wextra -c
