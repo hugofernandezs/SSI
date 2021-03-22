@@ -18,14 +18,14 @@ std::vector<uint8_t> CAcipher::cipher(const uint8_t& size) {
   for(uint8_t i = 0; i < size; i++) {
     uint8_t generatorBit1 = generator1_[2] ^ generator1_[9];
     uint8_t generatorBit2 = generator2_[1] ^ generator2_[2] ^ generator2_[5] ^ generator2_[7] ^ generator2_[8] ^ generator2_[9];
-    uint8_t prnBit = generator2_[prn_.first] ^ generator1_[prn_.second];
-    result.emplace_back(uint8_t(prnBit ^ generator1_[9]));
+    uint8_t prnBit = generator2_[prn_.first - 1] ^ generator1_[prn_.second - 1];
+    result.emplace_back(uint8_t(prnBit ^ generator1_.back()));
     for(uint8_t j = RDRL_SIZE - 1; j > 0; j--) {
       generator1_[j] = generator1_[j - 1];
       generator2_[j] = generator2_[j - 1];
     }
-    generator1_[0] = generatorBit1;
-    generator2_[0] = generatorBit2;
+    generator1_.front() = generatorBit1;
+    generator2_.front() = generatorBit2;
   }
   return result;
 }

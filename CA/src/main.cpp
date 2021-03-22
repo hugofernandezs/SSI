@@ -11,9 +11,9 @@
  */
 int main(void) {
   CAcipher aux({2, 6});
-  std::vector<uint8_t> result = aux.cipher(14);
+  std::vector<uint8_t> result = aux.cipher(13);
   std::cout << "Result: {";
-  for (const int& bit : result) {
+  for (const uint& bit : result) {
     std::cout << bit << ", ";
   }
   std::cout << "\b\b}" << std::endl;
