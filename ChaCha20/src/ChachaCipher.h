@@ -15,12 +15,18 @@
 #define ROUNDS 10
 
 
+/*
+ * Implementa un cifrado chacha20
+ */
 class ChachaCipher {
   private:
-    std::array<uint32_t, 8> keyStream_;
+    std::array<uint32_t, 8> keyStream_;     // Almacena la key. 
   
   public:
-    ChachaCipher(const std::array<uint32_t, 8>& key);
-    std::array<uint32_t, 16> cipher(void);
-    std::array<uint32_t, 16> chacha_block(const std::array<uint32_t, 16>& block);
+    ChachaCipher(const std::array<uint32_t, 8>& key);   // Constructor.
+    std::array<uint32_t, 16> cipher(void);              // Cifrado.
+  
+  private:
+    std::array<uint32_t, 16> chacha_block(const std::array<uint32_t, 16>& block);   //Algoritmo chacha20.
+    void print_block(const std::array<uint32_t, 16>& array);
 };

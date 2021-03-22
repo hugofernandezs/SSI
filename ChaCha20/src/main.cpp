@@ -6,7 +6,9 @@
 
 #include "ChachaCipher.h"
 
-
+/*
+ * Programa de prueba del chacha20.
+ */
 int main(void) {
   const std::array<uint32_t, 8> key {
     0x03020100,
